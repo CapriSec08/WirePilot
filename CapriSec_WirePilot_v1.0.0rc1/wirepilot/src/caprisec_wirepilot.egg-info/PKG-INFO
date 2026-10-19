@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: caprisec-wirepilot
+Version: 1.0.0rc1
+Summary: Evidence-first network investigation MCP for Project LEON
+License-Expression: MIT
+Requires-Python: >=3.11
+License-File: LICENSE
+Requires-Dist: mcp==1.30.0
+Provides-Extra: test
+Requires-Dist: pytest<10,>=8; extra == "test"
+Dynamic: license-file

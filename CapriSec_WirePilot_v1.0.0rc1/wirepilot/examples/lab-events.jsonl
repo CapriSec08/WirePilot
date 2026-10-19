@@ -1,0 +1,2 @@
+{"time":1760000001.0,"source":"10.0.0.10","destination":"10.0.0.20","kind":"firewall_observation","description":"Synthetic permitted connection observation","device":"lab-firewall","decision":"allow"}
+{"time":1760000002.0,"source":"10.0.0.10","destination":"10.0.0.30","kind":"application_observation","description":"Synthetic upstream service unavailable","device":"lab-proxy","decision":"http_503"}

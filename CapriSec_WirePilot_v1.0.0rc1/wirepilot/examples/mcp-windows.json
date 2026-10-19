@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "wirepilot": {
+      "command": "C:\\Users\\USER\\wirepilot\\.venv\\Scripts\\python.exe",
+      "args": [
+        "-m",
+        "wirepilot.server"
+      ],
+      "env": {
+        "WIREPILOT_CAPTURE_ROOT": "C:\\Users\\USER\\wirepilot\\captures",
+        "WIREPILOT_STATE_ROOT": "C:\\Users\\USER\\wirepilot\\state",
+        "WIREPILOT_TSHARK": "C:\\Program Files\\Wireshark\\tshark.exe",
+        "WIREPILOT_PACKET_LIMIT": "50000",
+        "WIREPILOT_IMPORT_ROOT": "C:\\Users\\USER\\wirepilot\\incoming",
+        "WIREPILOT_ALLOW_PAYLOAD": "0"
+      }
+    }
+  }
+}

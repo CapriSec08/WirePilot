@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-19",
+  "scope": "Linux Python 3.12 development/test package environment",
+  "packages_checked": 62,
+  "known_vulnerability_entries": 0,
+  "limitations": [
+    "Package vulnerability database snapshot only; not an application security proof or an audit of OS/network executables."
+  ]
+}

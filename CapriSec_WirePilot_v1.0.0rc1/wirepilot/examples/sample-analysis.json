@@ -1,0 +1,421 @@
+{
+  "fixture": "lab-ftp-auth.pcap",
+  "version": "1.0.0rc1",
+  "coverage": {
+    "capture_id": "cap_96c9e6a0f4a146fd",
+    "sha256": "d1ebc5147539c4e62df191f2bb80c5eedee045aeabe2fb19bda362bfb16c24f4",
+    "packet_prefix_limit": 50000,
+    "start_frame": 1,
+    "end_frame_requested": 50000,
+    "start_epoch": null,
+    "end_epoch": null,
+    "next_start_frame": null,
+    "reached_end_of_capture": true,
+    "whole_capture": true,
+    "returned_packets": 28,
+    "prefix_limit_reached": false,
+    "display_filter": "",
+    "unsupported_fields": [],
+    "scope": "Input frames 1\u201350000; filters/time bounds apply only in this range. Earlier frames are decoded for protocol context. Use next_start_frame to continue.",
+    "limitations": [
+      "Only the first occurrence of repeated fields is retained (including tunneled addresses).",
+      "Encrypted application content and traffic outside this capture are not visible.",
+      "Capture loss, asymmetry and truncation can mimic network faults."
+    ]
+  },
+  "mode": "general",
+  "summary": {
+    "packets": 28,
+    "wire_bytes": 2027,
+    "duration_seconds": 2.7,
+    "first_epoch": 1760000000.0,
+    "last_epoch": 1760000002.7,
+    "average_bits_per_second": 6005.93,
+    "protocol_packet_counts": {
+      "ip": 28,
+      "tcp": 28,
+      "ethertype": 28,
+      "eth": 28,
+      "ftp": 25
+    },
+    "top_source_wire_bytes": {
+      "10.0.0.20": 1040,
+      "10.0.0.10": 987
+    },
+    "top_destination_ports": {
+      "tcp/21": 14,
+      "tcp/50000": 14
+    },
+    "truncated_frames": 0,
+    "note": "Wire bytes include headers and retransmissions; they are not unique application bytes."
+  },
+  "assessment": "1 triage findings in the selected capture range; analyst correlation is required.",
+  "findings": [
+    {
+      "rule_id": "REPEATED_AUTH_FAILURES",
+      "title": "Repeated FTP authentication failures: 10.0.0.10 \u2192 10.0.0.20",
+      "severity": "medium",
+      "confidence": "medium",
+      "observed_packets": 5,
+      "evidence": [
+        {
+          "frame": 8,
+          "time_epoch": 1760000000.7,
+          "source": "10.0.0.20",
+          "destination": "10.0.0.10"
+        },
+        {
+          "frame": 12,
+          "time_epoch": 1760000001.1,
+          "source": "10.0.0.20",
+          "destination": "10.0.0.10"
+        },
+        {
+          "frame": 16,
+          "time_epoch": 1760000001.5,
+          "source": "10.0.0.20",
+          "destination": "10.0.0.10"
+        },
+        {
+          "frame": 20,
+          "time_epoch": 1760000001.9,
+          "source": "10.0.0.20",
+          "destination": "10.0.0.10"
+        },
+        {
+          "frame": 24,
+          "time_epoch": 1760000002.3,
+          "source": "10.0.0.20",
+          "destination": "10.0.0.10"
+        }
+      ],
+      "evidence_truncated": false,
+      "interpretation": "5 visible outcomes within 60s; candidate for brute-force investigation, not proof of intent.",
+      "alternative_explanations": [
+        "Stale credentials",
+        "Misconfigured service",
+        "Legitimate retry loop"
+      ],
+      "next_steps": [
+        "Review account/source role and server authentication logs.",
+        "Correlate subsequent success with account identity and endpoint activity."
+      ],
+      "accounts": [
+        "analyst"
+      ],
+      "subsequent_successes": [
+        {
+          "protocol": "ftp",
+          "outcome": "success",
+          "account": "analyst",
+          "source": "10.0.0.10",
+          "destination": "10.0.0.20",
+          "time_epoch": 1760000002.7,
+          "frame": 28,
+          "tcp_stream": "0",
+          "detail": "FTP response 230"
+        }
+      ],
+      "success_account_correlation": "Same source/destination/protocol only; verify accounts/session identity before attributing a compromise."
+    }
+  ],
+  "total_findings": 1,
+  "findings_truncated": false,
+  "rule_counts": {
+    "REPEATED_AUTH_FAILURES": 1
+  },
+  "check_availability": {
+    "ftp_authentication": {
+      "status": "fields_available",
+      "missing_fields": []
+    },
+    "smb_authentication": {
+      "status": "fields_available",
+      "missing_fields": []
+    },
+    "kerberos_authentication": {
+      "status": "fields_available",
+      "missing_fields": []
+    },
+    "http_challenges": {
+      "status": "fields_available",
+      "missing_fields": []
+    },
+    "path_mtu": {
+      "status": "fields_available",
+      "missing_fields": []
+    },
+    "dns_timing": {
+      "status": "fields_available",
+      "missing_fields": []
+    }
+  },
+  "authentication": {
+    "findings": [
+      {
+        "rule_id": "REPEATED_AUTH_FAILURES",
+        "title": "Repeated FTP authentication failures: 10.0.0.10 \u2192 10.0.0.20",
+        "severity": "medium",
+        "confidence": "medium",
+        "observed_packets": 5,
+        "evidence": [
+          {
+            "frame": 8,
+            "time_epoch": 1760000000.7,
+            "source": "10.0.0.20",
+            "destination": "10.0.0.10"
+          },
+          {
+            "frame": 12,
+            "time_epoch": 1760000001.1,
+            "source": "10.0.0.20",
+            "destination": "10.0.0.10"
+          },
+          {
+            "frame": 16,
+            "time_epoch": 1760000001.5,
+            "source": "10.0.0.20",
+            "destination": "10.0.0.10"
+          },
+          {
+            "frame": 20,
+            "time_epoch": 1760000001.9,
+            "source": "10.0.0.20",
+            "destination": "10.0.0.10"
+          },
+          {
+            "frame": 24,
+            "time_epoch": 1760000002.3,
+            "source": "10.0.0.20",
+            "destination": "10.0.0.10"
+          }
+        ],
+        "evidence_truncated": false,
+        "interpretation": "5 visible outcomes within 60s; candidate for brute-force investigation, not proof of intent.",
+        "alternative_explanations": [
+          "Stale credentials",
+          "Misconfigured service",
+          "Legitimate retry loop"
+        ],
+        "next_steps": [
+          "Review account/source role and server authentication logs.",
+          "Correlate subsequent success with account identity and endpoint activity."
+        ],
+        "accounts": [
+          "analyst"
+        ],
+        "subsequent_successes": [
+          {
+            "protocol": "ftp",
+            "outcome": "success",
+            "account": "analyst",
+            "source": "10.0.0.10",
+            "destination": "10.0.0.20",
+            "time_epoch": 1760000002.7,
+            "frame": 28,
+            "tcp_stream": "0",
+            "detail": "FTP response 230"
+          }
+        ],
+        "success_account_correlation": "Same source/destination/protocol only; verify accounts/session identity before attributing a compromise."
+      }
+    ],
+    "total_findings": 1,
+    "findings_truncated": false,
+    "events": [
+      {
+        "protocol": "ftp",
+        "outcome": "failure",
+        "account": "analyst",
+        "source": "10.0.0.10",
+        "destination": "10.0.0.20",
+        "time_epoch": 1760000000.7,
+        "frame": 8,
+        "tcp_stream": "0",
+        "detail": "FTP response 530"
+      },
+      {
+        "protocol": "ftp",
+        "outcome": "failure",
+        "account": "analyst",
+        "source": "10.0.0.10",
+        "destination": "10.0.0.20",
+        "time_epoch": 1760000001.1,
+        "frame": 12,
+        "tcp_stream": "0",
+        "detail": "FTP response 530"
+      },
+      {
+        "protocol": "ftp",
+        "outcome": "failure",
+        "account": "analyst",
+        "source": "10.0.0.10",
+        "destination": "10.0.0.20",
+        "time_epoch": 1760000001.5,
+        "frame": 16,
+        "tcp_stream": "0",
+        "detail": "FTP response 530"
+      },
+      {
+        "protocol": "ftp",
+        "outcome": "failure",
+        "account": "analyst",
+        "source": "10.0.0.10",
+        "destination": "10.0.0.20",
+        "time_epoch": 1760000001.9,
+        "frame": 20,
+        "tcp_stream": "0",
+        "detail": "FTP response 530"
+      },
+      {
+        "protocol": "ftp",
+        "outcome": "failure",
+        "account": "analyst",
+        "source": "10.0.0.10",
+        "destination": "10.0.0.20",
+        "time_epoch": 1760000002.3,
+        "frame": 24,
+        "tcp_stream": "0",
+        "detail": "FTP response 530"
+      },
+      {
+        "protocol": "ftp",
+        "outcome": "success",
+        "account": "analyst",
+        "source": "10.0.0.10",
+        "destination": "10.0.0.20",
+        "time_epoch": 1760000002.7,
+        "frame": 28,
+        "tcp_stream": "0",
+        "detail": "FTP response 230"
+      }
+    ],
+    "total_events": 6,
+    "events_truncated": false,
+    "threshold": 5,
+    "window_seconds": 60,
+    "limitations": [
+      "SSH/RDP/HTTPS authentication outcomes generally require endpoint/server logs or decrypted traffic.",
+      "HTTP 401 may be a normal challenge; HTTP 200 is not counted as a successful login.",
+      "TShark-marked TCP retransmissions are ignored; unflagged application replays may still inflate counts.",
+      "No request context/account is invented when the request lies outside the selected range."
+    ]
+  },
+  "engineering": {
+    "findings": [],
+    "tcp_ack_rtt": {
+      "samples": 26,
+      "median_ms": 100.0,
+      "p95_ms": 100.0,
+      "max_ms": 100.0
+    },
+    "dns_response_timing": {
+      "samples": 0,
+      "median_ms": null,
+      "p95_ms": null,
+      "max_ms": null
+    },
+    "vlans_observed": [],
+    "dhcp_message_counts": {},
+    "limitations": [
+      "ACK RTT reflects this capture point and can include delayed ACKs; it is not pure link latency.",
+      "No vendor device APIs, VPN configuration parser, BGP/OSPF state or Wi-Fi RF diagnosis is implemented."
+    ]
+  },
+  "ransomware": {
+    "assessment": "Network indicators only; ransomware cannot be confirmed or ruled out from these checks.",
+    "findings": [],
+    "coverage_gaps": [
+      "Encrypted SMB hides file operations.",
+      "Local-only file encryption may leave no relevant network signal.",
+      "No malware signatures, file content classification or endpoint telemetry are used."
+    ],
+    "velopilot_handoff": {
+      "status": "Recommended handoff; no VeloPilot connection is implemented.",
+      "hosts": [],
+      "collect": [
+        "EDR alerts",
+        "process trees",
+        "file modification timeline",
+        "SMB authentication",
+        "service/task creation",
+        "ransom notes"
+      ]
+    }
+  },
+  "timeline": {
+    "events": [
+      {
+        "frame": 8,
+        "time_epoch": 1760000000.7,
+        "source": "10.0.0.20",
+        "destination": "10.0.0.10",
+        "time_utc": "2025-10-09T08:53:20.700000+00:00",
+        "observations": [
+          "FTP response 530"
+        ]
+      },
+      {
+        "frame": 12,
+        "time_epoch": 1760000001.1,
+        "source": "10.0.0.20",
+        "destination": "10.0.0.10",
+        "time_utc": "2025-10-09T08:53:21.100000+00:00",
+        "observations": [
+          "FTP response 530"
+        ]
+      },
+      {
+        "frame": 16,
+        "time_epoch": 1760000001.5,
+        "source": "10.0.0.20",
+        "destination": "10.0.0.10",
+        "time_utc": "2025-10-09T08:53:21.500000+00:00",
+        "observations": [
+          "FTP response 530"
+        ]
+      },
+      {
+        "frame": 20,
+        "time_epoch": 1760000001.9,
+        "source": "10.0.0.20",
+        "destination": "10.0.0.10",
+        "time_utc": "2025-10-09T08:53:21.900000+00:00",
+        "observations": [
+          "FTP response 530"
+        ]
+      },
+      {
+        "frame": 24,
+        "time_epoch": 1760000002.3,
+        "source": "10.0.0.20",
+        "destination": "10.0.0.10",
+        "time_utc": "2025-10-09T08:53:22.300000+00:00",
+        "observations": [
+          "FTP response 530"
+        ]
+      },
+      {
+        "frame": 28,
+        "time_epoch": 1760000002.7,
+        "source": "10.0.0.20",
+        "destination": "10.0.0.10",
+        "time_utc": "2025-10-09T08:53:22.700000+00:00",
+        "observations": [
+          "FTP response 230"
+        ]
+      }
+    ],
+    "total_events": 6,
+    "truncated": false,
+    "note": "Times come from the capture; verify timezone/clock accuracy and NAT/DHCP identity externally."
+  },
+  "recommended_tools": [
+    "inspect_protocol",
+    "packet_details",
+    "query_packet_range",
+    "get_timeline"
+  ],
+  "confidence_policy": "Qualitative labels describe evidence strength, not calibrated probabilities or confirmed attack attribution.",
+  "content_is_untrusted": true
+}

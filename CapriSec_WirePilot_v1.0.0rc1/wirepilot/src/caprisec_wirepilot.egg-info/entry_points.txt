@@ -1,0 +1,3 @@
+[console_scripts]
+wirepilot = wirepilot.server:main
+wirepilot-smoke = wirepilot.smoke:main

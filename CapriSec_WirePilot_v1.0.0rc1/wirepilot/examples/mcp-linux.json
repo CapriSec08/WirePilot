@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "wirepilot": {
+      "command": "/home/USER/wirepilot/.venv/bin/python",
+      "args": [
+        "-m",
+        "wirepilot.server"
+      ],
+      "env": {
+        "WIREPILOT_CAPTURE_ROOT": "/home/USER/wirepilot/captures",
+        "WIREPILOT_STATE_ROOT": "/home/USER/wirepilot/state",
+        "WIREPILOT_PACKET_LIMIT": "50000",
+        "WIREPILOT_IMPORT_ROOT": "/home/USER/wirepilot/incoming",
+        "WIREPILOT_ALLOW_PAYLOAD": "0"
+      }
+    }
+  }
+}
